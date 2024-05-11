@@ -57,3 +57,32 @@ class OrderViewSet(
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except JSONDecodeError:
             return JsonResponse({"result": "error","message": "Json decoding error"}, status= 400)
+        
+        
+        
+        
+# from rest_framework import viewsets
+
+# class ItemViewSet(viewsets.ModelViewSet):
+#     queryset = Item.objects.filter(is_active=True)  # Pre-filter for active items
+#     serializer_class = ItemSerializer
+
+#     def perform_create(self, serializer):
+#         serializer.save(user=self.request.user)  # Assign logged-in user
+#         return serializer.save()
+
+
+# from rest_framework import viewsets
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.authentication import TokenAuthentication
+# from .models import Item
+# from .serializers import ItemSerializer
+
+# class ItemViewSet(viewsets.ModelViewSet):
+#     queryset = Item.objects.all()
+#     serializer_class = ItemSerializer
+#     authentication_classes = [TokenAuthentication]
+#     permission_classes = [IsAuthenticated]
+
+#     def perform_create(self, serializer):
+#         serializer.save(user=self.request.user)
